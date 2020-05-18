@@ -30,6 +30,7 @@ namespace planetsCSapi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IDbConnection>(x => CreateDbConnection());
             services.AddTransient<PlanetsService>();
             services.AddTransient<PlanetsRepository>();
         }
