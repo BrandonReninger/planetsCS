@@ -32,5 +32,11 @@ namespace planetsCSapi.Repositories
             newPlanet.Id = _db.ExecuteScalar<int>(sql, newPlanet);
             return newPlanet;
         }
+
+        internal Planet GetById(int id)
+        {
+            string sql = "SELECT * FROM planets WHERE id = @Id";
+            return _db.QueryFirstOrDefault<Planet>(sql, new { id });
+        }
     }
 }

@@ -25,5 +25,15 @@ namespace planetsCSapi.Services
             Planet createdPlanet = _repo.Create(newPlanet);
             return createdPlanet;
         }
+
+        internal Planet GetById(int id)
+        {
+            Planet foundPlanet = _repo.GetById(id);
+            if (foundPlanet == null)
+            {
+                throw new Exception("invalid id!");
+            }
+            return foundPlanet;
+        }
     }
 }

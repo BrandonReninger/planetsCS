@@ -45,5 +45,18 @@ namespace planetsCSapi.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Planet> GetById(int id)
+        {
+            try
+            {
+                return Ok(_ps.GetById(id));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
