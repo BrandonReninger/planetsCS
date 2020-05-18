@@ -20,5 +20,17 @@ namespace planetsCSapi.Repositories
             string sql = "SELECT * FROM planets";
             return _db.Query<Planet>(sql);
         }
+
+        internal Planet Create(Planet newPlanet)
+        {
+            string sql = @"
+            INSERT INTO planets
+            (title, category, habitable, distance)
+            VALUES
+            (@title, @category, @habitable, @distance);
+            SELECT LAST_INSERT_ID()";
+            newPlanet.Id = _db.ExecuteScalar<int>(sql, newPlanet);
+            return newPlanet;
+        }
     }
 }

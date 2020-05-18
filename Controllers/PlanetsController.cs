@@ -32,5 +32,18 @@ namespace planetsCSapi.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpPost]
+        public ActionResult<Planet> Create([FromBody] Planet newPlanet)
+        {
+            try
+            {
+                return Ok(_ps.Create(newPlanet));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }

@@ -19,5 +19,11 @@ namespace planetsCSapi.Services
         {
             return _repo.GetAll();
         }
+
+        internal Planet Create(Planet newPlanet)
+        {
+            Planet createdPlanet = _repo.Create(newPlanet);
+            return createdPlanet;
+        }
     }
 }
