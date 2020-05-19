@@ -46,14 +46,14 @@ namespace planetsCSapi.Services
             throw new Exception("Something is fishy here.");
         }
 
-        internal object Edit(int id)
+        internal Planet Edit(int id, Planet updatePlanet)
         {
             Planet editPlanet = GetById(id);
-            if (_repo.Edit(id))
-            {
-                return editPlanet;
-            }
-            throw new Exception("Whoops something is off.");
+            editPlanet.Title = updatePlanet.Title;
+            editPlanet.Category = updatePlanet.Category;
+            editPlanet.Habitable = updatePlanet.Habitable;
+            editPlanet.Distance = updatePlanet.Distance;
+            return _repo.Edit(editPlanet);
         }
     }
 }

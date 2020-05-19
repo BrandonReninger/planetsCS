@@ -77,7 +77,7 @@ namespace planetsCSapi.Controllers
         {
             try
             {
-                return Ok(_ps.Edit(id));
+                return Ok(_ps.Edit(id, updatePlanet));
             }
             catch (System.Exception err)
             {

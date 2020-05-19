@@ -46,14 +46,18 @@ namespace planetsCSapi.Repositories
             return affectedRows == 1;
         }
 
-        internal bool Edit(int id)
+        internal Planet Edit(Planet editPlanet)
         {
             //ANCHOR finish this 
-            string sql = @"UPDATE FROM planets
-            SET 
-            ";
-            int affectedRows = _db.Execute(sql, new { id });
-            return affectedRows == 1;
+            string sql = @" UPDATE planets
+            SET
+            title = @title,
+            category = @category,
+            habitable = @habitable,
+            distance = @distance
+            WHERE id = @Id LIMIT 1";
+            _db.Execute(sql, editPlanet);
+            return editPlanet;
         }
     }
 }
