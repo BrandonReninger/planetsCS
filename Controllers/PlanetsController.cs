@@ -58,5 +58,19 @@ namespace planetsCSapi.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult<string> Delete(int id)
+        {
+            try
+            {
+                return Ok(_ps.Delete(id));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
     }
 }

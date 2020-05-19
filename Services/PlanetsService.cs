@@ -35,5 +35,15 @@ namespace planetsCSapi.Services
             }
             return foundPlanet;
         }
+
+        internal Planet Delete(int id)
+        {
+            Planet foundPlanet = GetById(id);
+            if (_repo.Delete(id))
+            {
+                return foundPlanet;
+            }
+            throw new Exception("Something is fishy here.");
+        }
     }
 }

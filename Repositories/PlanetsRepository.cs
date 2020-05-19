@@ -38,5 +38,12 @@ namespace planetsCSapi.Repositories
             string sql = "SELECT * FROM planets WHERE id = @Id";
             return _db.QueryFirstOrDefault<Planet>(sql, new { id });
         }
+
+        internal bool Delete(int id)
+        {
+            string sql = "DELETE FROM planets WHERE id = @Id LIMIT 1";
+            int affectedRows = _db.Execute(sql, new { id });
+            return affectedRows == 1;
+        }
     }
 }
