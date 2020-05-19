@@ -45,5 +45,15 @@ namespace planetsCSapi.Services
             }
             throw new Exception("Something is fishy here.");
         }
+
+        internal object Edit(int id)
+        {
+            Planet editPlanet = GetById(id);
+            if (_repo.Edit(id))
+            {
+                return editPlanet;
+            }
+            throw new Exception("Whoops something is off.");
+        }
     }
 }

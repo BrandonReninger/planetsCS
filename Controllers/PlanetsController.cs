@@ -72,5 +72,18 @@ namespace planetsCSapi.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public ActionResult<Planet> Edit(int id, [FromBody] Planet updatePlanet)
+        {
+            try
+            {
+                return Ok(_ps.Edit(id));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
     }
 }

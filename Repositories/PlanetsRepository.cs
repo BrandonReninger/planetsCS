@@ -45,5 +45,15 @@ namespace planetsCSapi.Repositories
             int affectedRows = _db.Execute(sql, new { id });
             return affectedRows == 1;
         }
+
+        internal bool Edit(int id)
+        {
+            //ANCHOR finish this 
+            string sql = @"UPDATE FROM planets
+            SET 
+            ";
+            int affectedRows = _db.Execute(sql, new { id });
+            return affectedRows == 1;
+        }
     }
 }
